@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  REACT_APP_SHITCOIN_TRACKER_TELEGRAM_BOT_TOKEN = ""
+  REACT_APP_BOTS_TELEGRAM_CHAT_ID = "" 
