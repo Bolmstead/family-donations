@@ -22,6 +22,7 @@ const familyMembers = [
   { name: "Amy", photo: "" },
   { name: "Tyler", photo: "" },
 ];
+console.log("🚀 ~ familyMembers:", familyMembers);
 
 const App = () => {
   return (
