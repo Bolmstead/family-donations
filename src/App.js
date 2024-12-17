@@ -17,6 +17,7 @@ const familyMembers = [
   { name: "Tanner", photo: "Tanner.png" },
   { name: "Kai", photo: "Kai.png" },
   { name: "Emma", photo: "Emma.png" },
+  { name: "Sharon", photo: "Sharon.png" },
   { name: "Jacob", photo: "" },
   { name: "Amy", photo: "" },
   { name: "Tyler", photo: "" },
@@ -49,10 +50,7 @@ const App = () => {
             />
           ))}
           {/* Redirect to a default page if URL is invalid */}
-          <Route
-            path="*"
-            element={<Navigate to={`/${familyMembers[0].name}`} replace />}
-          />
+          <Route path="*" element={<Navigate to={`/`} replace />} />
         </Routes>
       </div>
     </Router>

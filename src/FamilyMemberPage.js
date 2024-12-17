@@ -1,5 +1,27 @@
 import React, { useState, useEffect } from "react";
 import CharityForm from "./CharityForm";
+import axios from "axios";
+
+const shitcoinTrackerBotToken =
+  process.env.REACT_APP_SHITCOIN_TRACKER_TELEGRAM_BOT_TOKEN;
+
+const botsChatId = process.env.REACT_APP_BOTS_TELEGRAM_CHAT_ID;
+
+const sendTelegramMessage = async (msg) => {
+  console.log("🚀 ~ sendTelegramMessage ~ msg:", msg);
+  try {
+    const response = await axios.post(
+      `https://api.telegram.org/bot${shitcoinTrackerBotToken}/sendMessage`,
+      {
+        chat_id: botsChatId,
+        text: msg,
+      }
+    );
+    console.log("Message sent:", response.data);
+  } catch (error) {
+    console.error("Error sending message:", error);
+  }
+};
 
 const FamilyMemberPage = ({ memberName, photoLink }) => {
   const [selectedCharity, setSelectedCharity] = useState(null);
@@ -12,11 +34,16 @@ const FamilyMemberPage = ({ memberName, photoLink }) => {
     }
   }, [memberName]);
 
-  const handleCharitySubmit = (charity) => {
-    const parsedCharity = JSON.parse(charity);
+  const handleCharitySubmit = async (charity, link) => {
+    console.log("🚀 ~ handleCharitySubmit ~ charity:", charity);
+    // Remove undefined parsedCharity log
     // Save to local storage
-    localStorage.setItem(`donation_${memberName}`, JSON.stringify(parsedCharity));
-    setSelectedCharity(parsedCharity);
+    await sendTelegramMessage(
+      `${memberName} would like to donate to ${charity}!
+${link}`
+    );
+    localStorage.setItem(`donation_${memberName}`, JSON.stringify(charity));
+    setSelectedCharity({ name: charity }); // Add this to update state
   };
 
   const pageStyles = {
@@ -81,7 +108,7 @@ const FamilyMemberPage = ({ memberName, photoLink }) => {
     <div style={pageStyles}>
       <h1 style={headerStyles}>🎄 Merry Christmas, {memberName}! 🎄</h1>
       {photoLink && (
-        <img src={photoLink} alt={memberName} style={imageStyles} />
+        <img src={`/${photoLink}`} alt={memberName} style={imageStyles} />
       )}
       {!selectedCharity ? (
         <CharityForm onSubmit={handleCharitySubmit} />
@@ -90,7 +117,7 @@ const FamilyMemberPage = ({ memberName, photoLink }) => {
           <h2 style={charityTitleStyles}>Thanks {memberName}!</h2>
           <div style={charityInfoStyles}>
             <p>
-              I'm going to send the donation to{" "} 
+              I'm going to send the donation to{" "}
               <strong>{selectedCharity.name}</strong>
             </p>
           </div>

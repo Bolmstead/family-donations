@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import charities from "./Charities";
 
 const CharityForm = ({ onSubmit }) => {
-  const [selectedCharity, setSelectedCharity] = useState("");
+  const [selectedCharity, setSelectedCharity] = useState({
+    name: "",
+    link: "",
+  });
   const [customCharity, setCustomCharity] = useState({ name: "", link: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (selectedCharity) {
-      onSubmit(selectedCharity);
+    if (selectedCharity.name) {
+      onSubmit(selectedCharity.name, selectedCharity.link);
     } else if (customCharity.name && customCharity.link) {
-      onSubmit(JSON.stringify(customCharity));
+      onSubmit(customCharity.name, customCharity.link);
     }
   };
 
@@ -86,15 +89,15 @@ const CharityForm = ({ onSubmit }) => {
     color: "#2c3e50",
     marginBottom: "1.5rem",
     textAlign: "center",
-    fontSize: "clamp(1.2rem, 4vw, 1.8rem)",
+    fontSize: "clamp(1.2rem, 4vw, 1.4rem)",
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 style={headingStyles}>
+      <h3 style={headingStyles}>
         I'm giving you $100 to donate to any Charity you would like! <br />{" "}
         Choose one to donate to below
-      </h2>
+      </h3>
 
       <div style={sectionStyles}>
         <div style={cardsContainerStyles}>
@@ -102,12 +105,12 @@ const CharityForm = ({ onSubmit }) => {
             <div
               key={index}
               style={
-                selectedCharity === JSON.stringify(charity)
+                selectedCharity.name === charity.name
                   ? selectedCardStyles
                   : cardStyles
               }
               onClick={() => {
-                setSelectedCharity(JSON.stringify(charity));
+                setSelectedCharity(charity);
                 setCustomCharity({ name: "", link: "" });
               }}
             >
@@ -133,7 +136,7 @@ const CharityForm = ({ onSubmit }) => {
           placeholder="Charity Name"
           value={customCharity.name}
           onChange={(e) => {
-            setSelectedCharity("");
+            setSelectedCharity({ name: "", link: "" });
             setCustomCharity({ ...customCharity, name: e.target.value });
           }}
           style={inputStyles}
@@ -143,7 +146,7 @@ const CharityForm = ({ onSubmit }) => {
           placeholder="Charity's Site"
           value={customCharity.link}
           onChange={(e) => {
-            setSelectedCharity("");
+            setSelectedCharity({ name: "", link: "" });
             setCustomCharity({ ...customCharity, link: e.target.value });
           }}
           style={inputStyles}
