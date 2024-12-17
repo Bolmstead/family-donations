@@ -8,41 +8,53 @@ import {
 import FamilyMemberPage from "./FamilyMemberPage";
 
 const familyMembers = [
-  "murphy",
-  "dad",
-  "mom",
-  "brett",
-  "katie",
-  "ashley",
-  "tanner",
-  "kai",
-  "emma",
-  "jacob",
-  "amy",
-  "tyler",
+  { name: "Brudda", photo: "Murph.png" },
+  { name: "Dad", photo: "DadKatieJake.png" },
+  { name: "Mom", photo: "Mom.png" },
+  { name: "Brett", photo: "Brett.png" },
+  { name: "Katie", photo: "DadKatieJake.png" },
+  { name: "Ashley", photo: "Ash.png" },
+  { name: "Tanner", photo: "Tanner.png" },
+  { name: "Kai", photo: "Kai.png" },
+  { name: "Emma", photo: "Emma.png" },
+  { name: "Jacob", photo: "" },
+  { name: "Amy", photo: "" },
+  { name: "Tyler", photo: "" },
 ];
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        {familyMembers.map((name) => (
+      <div
+        style={{
+          maxWidth: "100%",
+          padding: "1rem",
+          margin: "0 auto",
+          boxSizing: "border-box",
+        }}
+      >
+        <Routes>
+          {familyMembers.map((item) => (
+            <Route
+              key={item.name}
+              path={`/${item.name}`}
+              element={
+                <FamilyMemberPage
+                  memberName={
+                    item.name.charAt(0).toUpperCase() + item.name.slice(1)
+                  }
+                  photoLink={item.photo}
+                />
+              }
+            />
+          ))}
+          {/* Redirect to a default page if URL is invalid */}
           <Route
-            key={name}
-            path={`/${name}`}
-            element={
-              <FamilyMemberPage
-                memberName={name.charAt(0).toUpperCase() + name.slice(1)}
-              />
-            }
+            path="*"
+            element={<Navigate to={`/${familyMembers[0].name}`} replace />}
           />
-        ))}
-        {/* Redirect to a default page if URL is invalid */}
-        <Route
-          path="*"
-          element={<Navigate to={`/${familyMembers[0]}`} replace />}
-        />
-      </Routes>
+        </Routes>
+      </div>
     </Router>
   );
 };
