@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import CharityForm from "./CharityForm";
 import axios from "axios";
 
-const shitcoinTrackerBotToken =
-  process.env.REACT_APP_SHITCOIN_TRACKER_TELEGRAM_BOT_TOKEN;
-
-const botsChatId = process.env.REACT_APP_BOTS_TELEGRAM_CHAT_ID;
-
-const sendTelegramMessage = async (msg) => {
+const sendTelegramMessage = async (msg, memberName) => {
   console.log("🚀 ~ sendTelegramMessage ~ msg:", msg);
   try {
     const response = await axios.post(
-      `https://api.telegram.org/bot${shitcoinTrackerBotToken}/sendMessage`,
+      `${REACT_APP_BACKEND_URL}family_presents`,
       {
-        chat_id: botsChatId,
-        text: msg,
+        memberName,
+        msg,
       }
     );
     console.log("Message sent:", response.data);
@@ -40,7 +35,8 @@ const FamilyMemberPage = ({ memberName, photoLink }) => {
     // Save to local storage
     await sendTelegramMessage(
       `${memberName} would like to donate to ${charity}!
-${link}`
+${link}`,
+      memberName
     );
     localStorage.setItem(`donation_${memberName}`, JSON.stringify(charity));
     setSelectedCharity({ name: charity }); // Add this to update state
