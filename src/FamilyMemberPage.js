@@ -20,14 +20,8 @@ const sendTelegramMessage = async (msg, memberName) => {
 
 const FamilyMemberPage = ({ memberName, photoLink }) => {
   const [selectedCharity, setSelectedCharity] = useState(null);
-
-  useEffect(() => {
-    // Check local storage for existing donation
-    const savedDonation = localStorage.getItem(`donation_${memberName}`);
-    if (savedDonation) {
-      setSelectedCharity(JSON.parse(savedDonation));
-    }
-  }, [memberName]);
+  const savedDonation = localStorage.getItem(`donation_${memberName}`);
+  const parsedDonation = savedDonation ? JSON.parse(savedDonation) : null;
 
   const handleCharitySubmit = async (charity, link) => {
     console.log("🚀 ~ handleCharitySubmit ~ charity:", charity);
@@ -106,7 +100,7 @@ ${link}`,
       {photoLink && (
         <img src={`/${photoLink}`} alt={memberName} style={imageStyles} />
       )}
-      {!selectedCharity ? (
+      {!parsedDonation ? (
         <CharityForm onSubmit={handleCharitySubmit} />
       ) : (
         <div style={charityDisplayStyles}>
@@ -114,7 +108,7 @@ ${link}`,
           <div style={charityInfoStyles}>
             <p>
               I'm going to send your donation to{" "}
-              <strong>{selectedCharity.name}</strong>. <br />
+              <strong>{parsedDonation}</strong>. <br />
               <br />
               <strong>Merry Christmas 🎄 </strong>- Berkley
             </p>
