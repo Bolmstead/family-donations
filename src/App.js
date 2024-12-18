@@ -90,6 +90,39 @@ const App = () => {
             path="/Tyler"
             element={<FamilyMemberPage memberName="Tyler" photoLink="" />}
           />
+          <Route
+            path="/Richard&Ali"
+            element={
+              <FamilyMemberPage
+                memberName="Richard & Ali"
+                photoLink="Richard.png"
+              />
+            }
+          />
+          <Route
+            path="/James&Allie"
+            element={
+              <FamilyMemberPage
+                memberName="James & Allie"
+                photoLink="James&Allie.png"
+              />
+            }
+          />
+          <Route
+            path="/David"
+            element={
+              <FamilyMemberPage memberName="David" photoLink="David.png" />
+            }
+          />
+          <Route
+            path="/Connor&Laura"
+            element={
+              <FamilyMemberPage
+                memberName="Connor & Laura"
+                photoLink="Connor&Laura.png"
+              />
+            }
+          />
           {/* Redirect to a default page if URL is invalid */}
           <Route path="*" element={<Navigate to={`/`} replace />} />
         </Routes>
