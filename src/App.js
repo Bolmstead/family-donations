@@ -95,7 +95,7 @@ const App = () => {
             element={
               <FamilyMemberPage
                 memberName="Richard & Ali"
-                photoLink="Richard.png"
+                photoLink="Richard.jpg"
               />
             }
           />
