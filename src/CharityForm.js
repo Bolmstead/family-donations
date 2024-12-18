@@ -130,7 +130,17 @@ const CharityForm = ({ onSubmit }) => {
       </div>
 
       <div style={sectionStyles}>
-        <h3 style={headingStyles}>Or pick your own!</h3>
+        <h3 style={headingStyles}>Or pick your own! </h3>{" "}
+        <span>
+          <a
+            href="https://www.charitywatch.org/top-rated-charities"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "#3498db", textDecoration: "none" }}
+          >
+            (Ideas)
+          </a>
+        </span>
         <input
           type="text"
           placeholder="Charity Name"
