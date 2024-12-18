@@ -96,9 +96,9 @@ ${link}`,
   return (
     <div style={pageStyles}>
       <h1 style={headerStyles}>
-        🎄 Merry Christmas,
+        🎄 Merry Christmas 🎄
         <br />
-        {memberName}! 🎄
+        {memberName}!
       </h1>
       {photoLink && (
         <img src={`/${photoLink}`} alt={memberName} style={imageStyles} />
