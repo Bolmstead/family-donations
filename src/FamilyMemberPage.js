@@ -53,7 +53,6 @@ ${link}`,
     marginBottom: "2rem",
     textAlign: "center",
     fontWeight: "600",
-    whiteSpace: "nowrap",
     width: "100%",
   };
 
@@ -68,7 +67,7 @@ ${link}`,
 
   const charityTitleStyles = {
     color: "#2c3e50",
-    fontSize: "clamp(1.2rem, 4vw, 1.8rem)",
+    fontSize: "clamp(1rem, 4vw, 1.8rem)",
     marginBottom: "1.5rem",
   };
 
@@ -96,7 +95,11 @@ ${link}`,
 
   return (
     <div style={pageStyles}>
-      <h1 style={headerStyles}>🎄 Merry Christmas, {memberName}! 🎄</h1>
+      <h1 style={headerStyles}>
+        🎄 Merry Christmas,
+        <br />
+        {memberName}! 🎄
+      </h1>
       {photoLink && (
         <img src={`/${photoLink}`} alt={memberName} style={imageStyles} />
       )}
