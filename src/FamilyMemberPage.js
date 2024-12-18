@@ -114,11 +114,13 @@ ${link}`
         <CharityForm onSubmit={handleCharitySubmit} />
       ) : (
         <div style={charityDisplayStyles}>
-          <h2 style={charityTitleStyles}>Thanks {memberName}!</h2>
+          <h2 style={charityTitleStyles}>Thanks!</h2>
           <div style={charityInfoStyles}>
             <p>
-              I'm going to send the donation to{" "}
-              <strong>{selectedCharity.name}</strong>
+              I'm going to send your donation to{" "}
+              <strong>{selectedCharity.name}</strong>. <br />
+              <br />
+              <strong>Merry Christmas 🎄 </strong>- Berkley
             </p>
           </div>
         </div>

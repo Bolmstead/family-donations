@@ -21,11 +21,15 @@ const App = () => {
         <Routes>
           <Route
             path="/Brudda"
-            element={<FamilyMemberPage memberName="Brudda" photoLink="Murph.png" />}
+            element={
+              <FamilyMemberPage memberName="Brudda" photoLink="Murph.png" />
+            }
           />
           <Route
-            path="/Dad" 
-            element={<FamilyMemberPage memberName="Dad" photoLink="DadKatieJake.png" />}
+            path="/Dad"
+            element={
+              <FamilyMemberPage memberName="Dad" photoLink="DadKatieJake.png" />
+            }
           />
           <Route
             path="/Mom"
@@ -33,19 +37,30 @@ const App = () => {
           />
           <Route
             path="/Brett"
-            element={<FamilyMemberPage memberName="Brett" photoLink="Brett.png" />}
+            element={
+              <FamilyMemberPage memberName="Brett" photoLink="Brett.png" />
+            }
           />
           <Route
             path="/Katie"
-            element={<FamilyMemberPage memberName="Katie" photoLink="DadKatieJake.png" />}
+            element={
+              <FamilyMemberPage
+                memberName="Katie"
+                photoLink="DadKatieJake.png"
+              />
+            }
           />
           <Route
             path="/Ashley"
-            element={<FamilyMemberPage memberName="Ashley" photoLink="Ash.png" />}
+            element={
+              <FamilyMemberPage memberName="Ashley" photoLink="Ash.png" />
+            }
           />
           <Route
             path="/Tanner"
-            element={<FamilyMemberPage memberName="Tanner" photoLink="Tanner.png" />}
+            element={
+              <FamilyMemberPage memberName="Tanner" photoLink="tanner.jpg" />
+            }
           />
           <Route
             path="/Kai"
@@ -53,11 +68,15 @@ const App = () => {
           />
           <Route
             path="/Emma"
-            element={<FamilyMemberPage memberName="Emma" photoLink="Emma.png" />}
+            element={
+              <FamilyMemberPage memberName="Emma" photoLink="Emma.png" />
+            }
           />
           <Route
             path="/Sharon"
-            element={<FamilyMemberPage memberName="Sharon" photoLink="Sharon.png" />}
+            element={
+              <FamilyMemberPage memberName="Sharon" photoLink="Sharon.png" />
+            }
           />
           <Route
             path="/Jacob"
