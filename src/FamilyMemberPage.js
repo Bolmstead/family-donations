@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CharityForm from "./CharityForm";
 import axios from "axios";
+import dotenv from 'dotenv';
+
+dotenv.config();
+const { REACT_APP_BACKEND_URL } = process.env;
 
 const sendTelegramMessage = async (msg, memberName) => {
   console.log("🚀 ~ sendTelegramMessage ~ msg:", msg);
