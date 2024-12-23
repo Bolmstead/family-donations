@@ -96,7 +96,7 @@ const CharityForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit}>
       <h3 style={headingStyles}>
         I'm giving you $50 to donate to any Charity you would like. <br />{" "}
-        Choose one to donate to
+        Choose one to donate to and click submit at the bottom of the screen
       </h3>
 
       <div style={sectionStyles}>
