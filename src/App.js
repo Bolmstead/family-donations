@@ -122,6 +122,10 @@ const App = () => {
                 photoLink="Connor&Laura.png"
               />
             }
+          />{" "}
+          <Route
+            path="/Cassidy"
+            element={<FamilyMemberPage memberName="Cassidy" photoLink="" />}
           />
           {/* Redirect to a default page if URL is invalid */}
           <Route path="*" element={<Navigate to={`/`} replace />} />
